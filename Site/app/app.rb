@@ -43,12 +43,14 @@ class GeoIPalize < Sinatra::Base
   
   Log_record = Struct.new( :ip, :timestamp, :access_request_type, :page, :status_code )
   
+  LOGFILES = "/var/log/nginx/"
+  
   get "/:logfile" do |logfile|
     output = ""
     halt if logfile.match %r{/|\\}
     logfile.gsub! /[^\w\.\-]/, '_'
     halt unless logfile.match /\.log$/
-    logfile = File.join ROOT, logfile
+    logfile = File.join LOGFILES, logfile
     lines = File.readlines(logfile, :encoding => "UTF-8" ).reverse
     
     ips = { }
