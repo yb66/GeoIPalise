@@ -9,7 +9,7 @@ require 'rdiscount'
 require_relative "../lib/ext/Array.rb"
 require_relative "../lib/ext/Hash.rb"
 
-class GeoIPalize < Sinatra::Base
+class GeoIPalise < Sinatra::Base
   
   ROOT = File.dirname(__FILE__) 
   Assets = File.expand_path( File.join ROOT, "../", "assets" )
