@@ -1,0 +1,3 @@
+%div{class: "record", ip: "#{record.ip}"}
+  %p= record.members.zip( record.values ).reduce(""){|mem,r| mem + "#{r.first}: #{r.last} " } unless record.nil?
+

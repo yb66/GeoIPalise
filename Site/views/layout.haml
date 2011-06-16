@@ -1,0 +1,28 @@
+%html
+  %head
+    %link{rel: "stylesheet", href: "/stylesheet.css", type: "text/css"}
+    %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js", type: "text/javascript"}
+    %script{src: "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js", type: "text/javascript"}
+
+  %body
+    #container
+      /skip links for text browsers
+      %span#skip
+        %a{:href=>'#main'}skip to main
+        
+      #header
+
+      =yield
+
+      /end content
+      
+      #footer
+      
+    :javascript
+      $(document).ready(function(){
+        $('div.records').hide();
+        $("a.records").live('click', function(){ 
+          $(this).closest('div.ip').find('div.records').toggle();
+        });
+      });
+

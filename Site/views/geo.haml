@@ -1,0 +1,2 @@
+%div{class: "geo", ip: "#{geo.ip unless geo.nil?}"}
+  %p= geo.members.zip( geo.values ).reduce(""){|mem,r| mem + "#{r.first}: #{r.last} " } unless geo.nil?

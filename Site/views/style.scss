@@ -1,0 +1,198 @@
+/*
+Thanks to http://www.xs4all.nl/~peterned/examples/csslayout1.html
+
+ */
+ 
+$margcolour: #666;           /* Margins colour */
+$header_colour: #f16e2e;           /* Link colour */
+$link_colour: #5471FF;           /* Link colour */
+$visitedlinkcolor: #5471FF; /* Visited link colour */
+$textcolour: #FFFA76;       /* Text colour */
+$width: 650px;              /* Width of page */
+$fontbase: 0.875em;         /* standard font size 10px */
+$font_family: Georgia, Sans-serif;
+$bgfixed: #000;             /* bg for fixed elems like header and footer */
+$dashed_border: #808080;    /* for dashed borders */
+$paper_colour: #000;     /* the colour of what is written on */
+$quote_border_colour: #f0d4b6;     /* blockquote background colour */
+$quote_colour: #F6EEC7;     /* blockquote background colour */
+
+@mixin myfonts {
+  font: $font_family;
+  font-style: normal;
+  font-weight: normal;
+  font-family: $font_family;
+}
+
+html,body {
+  /* margin:0; */
+  /* padding:0; */
+
+	height:100%; /* needed for container min-height */	
+	background-color: $margcolour; 
+
+  @include myfonts;
+  font-size:  $fontbase;
+}
+
+a {
+  color: $link_colour;
+  text-decoration:none;
+  &:hover { text-decoration: underline; }
+  &:visited { color: $visitedlinkcolor;  }
+  img {
+    border-width:0;
+  }
+}
+
+p { 
+	line-height:1.5em; 
+	margin:0 0 1em;
+}
+
+blockquote{ 
+  white-space: pre-wrap; /* css-3 */
+  white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
+  background-color: $quote_colour;
+  border: {
+    top: thin solid $quote_border_colour;
+    bottom: thin solid $quote_border_colour;
+  }
+}
+
+#container {
+	position:relative; /* needed for footer positioning*/
+	margin:0 auto; /* center */
+	width: $width;
+	background: $paper_colour;
+	
+	height:auto !important; /* real browsers */
+	height:100%; /* IE6: treaded as min-height*/
+
+	min-height:100%; /* real browsers */
+
+}
+
+#skip { display:none; }
+
+#header {
+  padding: 1px 1em 1em;
+  background: $bgfixed;
+  border-bottom: 2px dashed $dashed_border;
+  text-align: center;
+  
+	a {
+	  color: $link_colour;
+    &:visited { color: $header_colour; }
+	}
+
+  h1,h2 {
+    text-transform:uppercase;
+    letter-spacing:.2em;
+		text-shadow: #FFC55D 0px 1px 2px;
+  }
+  p {
+    font-style:italic;
+    font-size:1.1em;
+    margin:0;
+		color: #eb0727;
+  }
+	#hello {
+		font-family: futura;
+    font-style:normal;
+	  font-weight: 900;
+		background-color: #fff;
+	}
+}
+
+.ip {
+  h3 { color: #FFFA76 }
+  border: 1px solid #C0C3C3;
+}
+
+#content {
+  h1,h2,p, pre{ padding:0 1em; }
+  
+  text-align:justify;
+  pre{ border-left: 1px dashed $dashed_border;}
+  
+
+	p { color: $textcolour; }
+
+	
+  #meta {
+    color: #675568;
+    h1,h2 {
+      color: #9B909A;     
+      font-weight: normal;
+      padding-left:2em;
+			font-size: 0.5em;
+    }
+    p { 
+			padding:0 1.5em;
+			font-size: 0.5em; 
+		}
+  }
+  
+  #main {
+    h1,h2 { 
+			text-align: center; 
+			color: $textcolour;
+			text-shadow: #E6B655 3px 1px 2px;
+      font-size: 2em;
+		}
+		p { color: $textcolour; }
+		a { 
+		  font-size: 1.5em;
+		}
+		iframe{ 
+			padding: 1.5em 0;
+		}
+		ul {
+			padding-left: 9em;
+			list-style: none;
+		}
+		ol {list-style-type:hiragana; }
+		li {color: $textcolour; font-size:1.6em;
+		    a { font-size: 0.8em; }
+		  }
+		legend { color: $textcolour; }
+		
+		label { color: #77B9FF; }
+  	.errors { color: #ff0000 }
+  	
+  	.records {
+  	  padding-left: 9em;
+  	  text-align: center;
+  	  border: 1px dotted #C0C3C3;
+  	}
+  }
+  
+  padding:0.2em 1em 5em; /* bottom padding for footer */
+
+	#reflinks {
+	  border-top: 2px dashed $dashed_border;
+		a { 
+		  font-size: 1em;
+		}
+	}
+}
+
+
+
+#footer {
+  position:absolute;
+  width:100%;
+  bottom:0; /* stick to bottom */
+  background: $bgfixed;
+  border-top:2px double $dashed_border;
+  text-align: center;
+  p {
+    padding:1em;
+    margin:0;
+    color: #3CC881;
+  }
+}
