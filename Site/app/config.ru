@@ -5,7 +5,7 @@ require File.join( root , "app.rb" )
 
 app = Rack::Builder.app do
   
-  run GeoIPalie
+  run GeoIPalise
 end
 
 run app
