@@ -73,14 +73,6 @@ class GeoIPalise < Sinatra::Base
       geo = DB.city( k ) 
       h[k] = geo.nil? ? v : v.merge( {geo: geo } )
     end
-    # ips.merge(ips) do |k,v, new_v|
-    #   geo = DB.city( k ) 
-    #   ips[k][:geo] = geo unless geo.nil?
-    # end
-      # output << "\n\n\tPages:\n"
-      # output << v[:records].reduce("") do |mem, record|
-      #   mem + "#{record.timestamp} #{record.access_request_type} #{record.page} #{record.status_code}\n"
-      # end
 
     output << partial( :ip, collection: ips )
     output << partial(:main, :locals =>{ output: output } )
@@ -103,7 +95,6 @@ class GeoIPalise < Sinatra::Base
       opts.merge!(:layout => false) # don't layout, this is a partial
 
       if collection = opts.delete(:collection)
-        options.logger.debug "#{template} with COLLECTION!"
         collection.inject([]) do |buffer, member|
           buffer << haml(template, opts.merge(
             :layout => false, 
@@ -112,12 +103,10 @@ class GeoIPalise < Sinatra::Base
           )
         end.join("\n")
       else
-        options.logger.debug "#{template} with NO COLLECTION!"
         haml(template, opts)
       end
     end # def
     
   end # helpers
-  
-  
+
 end
